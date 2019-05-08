@@ -17,17 +17,20 @@ import frc.robot.subsystems.ExampleSubsystem;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Robot extends TimedRobot {
+  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   PWMVictorSPX m_frontLeft = new PWMVictorSPX(1);
   PWMVictorSPX m_rearLeft = new PWMVictorSPX(2);
   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
   PWMVictorSPX m_frontRight = new PWMVictorSPX(3);
   PWMVictorSPX m_rearRight = new PWMVictorSPX(4);
-  SpeedControllerGroup m_Right = new SpeedControllerGroup(m_frontRight, m_rearRight);
-  DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+  SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
+  DifferentialDrive m_robotDrive = new DifferentialDrive(m_left, m_right);
   
   private final Joystick m_stick = new Joystick(0);
   private final Timer m_timer = new Timer();
